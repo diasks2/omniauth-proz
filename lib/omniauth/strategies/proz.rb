@@ -24,12 +24,11 @@ module OmniAuth
 
       def raw_info
         puts "Get Raw Info"
-        @raw_info ||= access_token.get('https://api.proz.com/v2/user.json').parsed
+        @raw_info ||= access_token.get('https://api.proz.com/v2/user').parsed
       end
 
       protected
       def build_access_token
-        puts "REQUEST: #{request.inspect}"
         params = {
           'client_id' => client.id,
           'client_secret' => client.secret,
@@ -37,7 +36,6 @@ module OmniAuth
           'grant_type' => 'authorization_code',
           'redirect_uri' => 'http://localhost:3000/translators/auth/proz/callback'
           }.merge(token_params.to_hash(symbolize_keys: true))
-        puts "PARAMS: #{params}"
         client.get_token(params, deep_symbolize(options.auth_token_params))
       end
 
