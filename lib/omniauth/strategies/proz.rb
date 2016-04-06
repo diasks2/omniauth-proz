@@ -23,6 +23,7 @@ module OmniAuth
       end
 
       def raw_info
+        puts "Get Raw Info"
         @raw_info ||= access_token.get('https://api.proz.com/v2/user.json').parsed
       end
     end
