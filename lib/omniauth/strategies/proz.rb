@@ -34,7 +34,7 @@ module OmniAuth
           'client_id' => client.id,
           'client_secret' => client.secret,
           'code' => request.params['code'],
-          'grant_type' => 'authorization_code'
+          'grant_type' => 'authorization_code',
           'redirect_uri' => 'http://localhost:3000/translators/auth/proz/callback'
           }.merge(token_params.to_hash(symbolize_keys: true))
         puts "PARAMS: #{params}"
