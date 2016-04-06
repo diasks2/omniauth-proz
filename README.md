@@ -1,5 +1,7 @@
 # OmniAuth Proz
 
+[ProZ.com](http://www.proz.com/) OAuth2 Strategy for OmniAuth. You can find the ProZ API docs [here](http://www.proz.com/api-docs).
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+OmniAuth::Strategies::Proz is simply a Rack middleware. Read the OmniAuth docs for detailed instructions: https://github.com/intridea/omniauth.
+
+Here's a quick example, adding the middleware to a Rails app with Devise in config/initializers/devise.rb:
+
+```ruby
+  config.omniauth :proz, ENV['CLIENT_ID'], ENV['CLIENT_SECRET'], callback_url: '{your-site.com}/users/auth/proz/callback'
+```
 
 ## Contributing
 
