@@ -26,6 +26,19 @@ module OmniAuth
         puts "Get Raw Info"
         @raw_info ||= access_token.get('https://api.proz.com/v2/user.json').parsed
       end
+
+      protected
+      def build_access_token
+        puts "REQUEST: #{request}"
+        params = {
+          'appid' => client.id,
+          'secret' => client.secret,
+          'code' => request.params['code'],
+          'grant_type' => 'authorization_code'
+          }.merge(token_params.to_hash(symbolize_keys: true))
+        client.get_token(params, deep_symbolize(options.auth_token_params))
+      end
+
     end
   end
 end
