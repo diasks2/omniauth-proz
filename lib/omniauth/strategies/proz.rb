@@ -31,8 +31,8 @@ module OmniAuth
       def build_access_token
         puts "REQUEST: #{request.inspect}"
         params = {
-          'appid' => client.id,
-          'secret' => client.secret,
+          'client_id' => client.id,
+          'client_secret' => client.secret,
           'code' => request.params['code'],
           'grant_type' => 'authorization_code'
           }.merge(token_params.to_hash(symbolize_keys: true))
