@@ -19,7 +19,7 @@ module OmniAuth
       uid { raw_info['uuid'] }
 
       info do
-        prune!({
+        {
           :email => raw_info["email"],
           :name  => raw_info["site_name"],
           :profile_url  => raw_info["profile_url"],
@@ -35,7 +35,7 @@ module OmniAuth
             :expired_date => raw_info["proz_membership"]["expired_date"],
             :certified_pro_network_status => raw_info["proz_membership"]["certified_pro_network_status"]
           }
-        })
+        }
       end
 
       def raw_info
