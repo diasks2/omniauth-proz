@@ -19,11 +19,23 @@ module OmniAuth
       uid { raw_info['uuid'] }
 
       info do
-        {
+        prune!({
           :email => raw_info["email"],
           :name  => raw_info["site_name"],
-          :profile_url  => raw_info["profile_url"]
-        }
+          :profile_url  => raw_info["profile_url"],
+          :contact_info => {
+            :email => raw_info["contact_info"]["email"],
+            :first_name => raw_info["contact_info"]["first_name"],
+            :middle_name => raw_info["contact_info"]["middle_name"],
+            :last_name => raw_info["contact_info"]["last_name"]
+          },
+          :proz_membership => {
+            :status => raw_info["proz_membership"]["status"],
+            :expiration_date => raw_info["proz_membership"]["expiration_date"],
+            :expired_date => raw_info["proz_membership"]["expired_date"],
+            :certified_pro_network_status => raw_info["proz_membership"]["certified_pro_network_status"]
+          }
+        })
       end
 
       def raw_info
