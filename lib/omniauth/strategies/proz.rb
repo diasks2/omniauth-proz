@@ -4,7 +4,7 @@ module OmniAuth
   module Strategies
     class Proz < OmniAuth::Strategies::OAuth2
 
-      DEFAULT_SCOPE = 'user.email workstatus.post'
+      DEFAULT_SCOPE = 'user.email wiwo.post'
 
       option :name, :proz
 
